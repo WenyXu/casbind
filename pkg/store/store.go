@@ -296,10 +296,7 @@ func (s *Store) Close(wait bool) error {
 			return e.Error()
 		}
 	}
-	// Only shutdown Bolt and SQLite when Raft is done.
-	//if err := s.db.Close(); err != nil {
-	//	return err
-	//}
+
 	if err := s.boltStore.Close(); err != nil {
 		return err
 	}
